@@ -12,6 +12,15 @@ tile_num=32
 tile_size=grid_size/tile_num
 score=0
 
+fruit_x=0
+fruit_y=0
+fruit_color=8
+
+function draw_fruit()
+ rectfill(fruit_x,fruit_y,fruit_x+(tile_size-1),fruit_y+(tile_size-1),fruit_color)
+end
+ 
+
 function draw_snake()
  for i = 1, #x do
    rectfill(x[i],y[i],x[i]+tile_size-1,y[i]+tile_size-1,3)
@@ -44,6 +53,12 @@ function do_input()
  end
 end
 
+function update_fruit()
+ --randomly place the fruit
+ fruit_x = flr(rnd(tile_num))*tile_size
+ fruit_y = flr(rnd(tile_num))*tile_size
+end
+
 function update_snake()
  local tempx = x[1]
  local tempy = y[1]
@@ -70,6 +85,8 @@ function _init()
 x[1]=tile_size*(tile_num/4)
 y[1]=tile_size*(tile_num/2)
 
+update_fruit()
+
 end
 
 function _update()
@@ -80,6 +97,7 @@ end
 function _draw()
   cls()
   draw_snake()
+  draw_fruit()
   draw_score()
 end
 __gfx__
