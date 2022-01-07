@@ -22,7 +22,9 @@ end
  
 
 function draw_snake()
- for i = 1, #x do
+ 
+ rectfill(x[1],y[1],x[1]+tile_size-1,y[1]+tile_size-1,10)
+ for i = 2, #x do
    rectfill(x[i],y[i],x[i]+tile_size-1,y[i]+tile_size-1,3)
  end
    
@@ -77,7 +79,15 @@ function update_snake()
   tempx=temp1x
   tempy=temp1y
  end
-end  
+end
+
+function is_fruit_collision()
+ if(x[1]+(x_dir*tile_size) == fruit_x and y[1]+(y_dir*tile_size) == fruit_y) then
+   return true
+ end
+ return false
+    
+end
 
 
 function _init()
@@ -85,13 +95,34 @@ function _init()
 x[1]=tile_size*(tile_num/4)
 y[1]=tile_size*(tile_num/2)
 
+for i=2,5 do
+ x[i]=((x[i-1]/tile_size)-1)*tile_size
+ y[i]=y[1]
+end 
+
+
 update_fruit()
 
 end
 
 function _update()
  do_input()
- update_snake()
+ 
+ local collide=false
+ collide=is_fruit_collision()
+ if(collide) then
+  score=score+10
+  for i=#x+1,2,-1 do
+   x[i]=x[i-1]
+   y[i]=y[i-1]
+  end
+  x[1]=fruit_x
+  y[1]=fruit_y
+  update_fruit()
+ else
+  update_snake()
+ end
+ 
 end
 
 function _draw()
@@ -107,3 +138,4 @@ __gfx__
 00077000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
 00077000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
 00700700000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+
