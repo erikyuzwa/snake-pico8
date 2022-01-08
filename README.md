@@ -1,6 +1,8 @@
 # making a snake game with pico-8
 Snake for pico8!
 
+Follow along on YouTube - https://youtu.be/2Sx7nLV_jg8
+
 # how to develop
 
 - Have a fun attitude! :)
