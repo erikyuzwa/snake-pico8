@@ -10,7 +10,7 @@ y_dir=0
 
 tile_num=32
 tile_size=128/tile_num
-score=100
+score=0
 
 fruit={}
 fruit.x=0
@@ -118,7 +118,7 @@ function _init()
  x_dir=1
  
  -- set default snake tail
- for i=2,60 do
+ for i=2,7 do
   x[i]=((x[i-1]/tile_size)-1)*tile_size
   y[i]=y[1]
  end
