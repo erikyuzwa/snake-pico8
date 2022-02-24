@@ -15,6 +15,12 @@ Follow along on YouTube - https://youtu.be/2Sx7nLV_jg8
 
 ![image](./make-snake-with-pico8.jpg)
 
+## Changelog and Roadmap
+
+- v0.4 - initial release
+- v0.5 - get some walls in place
+- v0.6 - maybe a title and game over screen?
+
 # LICENSE
 
 Released under MIT License

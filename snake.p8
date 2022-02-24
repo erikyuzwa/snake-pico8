@@ -14,6 +14,10 @@ __lua__
 -- tab1: _draw
 -- tab2: _update
 
+
+-- version
+version="0.4"
+
 -- global variables
 x={}
 y={}
@@ -71,6 +75,9 @@ function _draw()
  draw_snake()
  draw_fruit()
  draw_score()
+ 
+ -- draw version
+ print("v"..version,100,1)
 end
 
 -- draw fruit
